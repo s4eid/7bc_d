@@ -10,7 +10,7 @@ export default function EditCForm() {
   return (
     <div className={editCForm.mainContainer}>
       <div className={editCForm.title}>
-        <p>Edit Product </p>
+        <p>Edit Product</p>
       </div>
       <div className={editCForm.container}>
         <Formik
