@@ -1,0 +1,102 @@
+.mainContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 600px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.pageInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #111111;
+  border-radius: 5px;
+  z-index: 999;
+  color: #fff;
+  position: absolute;
+  font-size: 14px;
+  opacity: 50%;
+  bottom: 0;
+  padding: 2px;
+}
+.pageInfo p {
+  margin: 0;
+}
+
+.childs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.childs img {
+}
+.slideHolder {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow-y: hidden;
+  width: 500px;
+  height: 350px;
+}
+.slideHolder img {
+  object-fit: contain;
+}
+.icon {
+  font-size: 60px;
+}
+.iconR {
+  position: absolute;
+  right: 5px;
+  font-size: 30px;
+  color: #0081ef;
+  cursor: pointer;
+  z-index: 1;
+  top: 50;
+}
+.iconL {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 30px;
+  color: #0081ef;
+  left: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mainContainer {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .iconR {
+    right: 20px;
+  }
+  .iconL {
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .slideHolder {
+    width: 450px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 416px) {
+  .slideHolder {
+    width: 300px;
+    height: 200px;
+  }
+  .iconL {
+    left: 0;
+    font-size: 20px;
+  }
+  .iconR {
+    right: 0;
+    font-size: 20px;
+  }
+}

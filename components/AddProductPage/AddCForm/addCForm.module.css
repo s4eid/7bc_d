@@ -1,0 +1,182 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  align-items: center;
+  width: 100%;
+}
+.container {
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+}
+.title {
+  display: flex;
+  border-bottom: 3px solid #666666;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 40px;
+}
+
+.fields {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.inputsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.holder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.field {
+  width: 400px;
+  background-color: #111111;
+  outline: none;
+  position: relative;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin: 10px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.field::placeholder {
+  text-align: center;
+}
+
+.fieldE {
+  width: 400px;
+  color: #fff;
+  margin: 10px;
+  outline: none;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #111111;
+  height: 40px;
+  font-size: 16px;
+  text-transform: lowercase;
+}
+
+.fieldE::placeholder {
+  text-align: center;
+}
+.fieldA {
+  min-height: 100px;
+  color: #fff;
+  margin: 10px;
+  outline: none;
+  min-width: 300px;
+  max-width: 400px;
+  max-height: 100px;
+  width: 400px;
+  height: 100px;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #111111;
+  font-size: 16px;
+  font-family: "inter";
+  text-transform: lowercase;
+}
+
+.fieldA::placeholder {
+  text-align: center;
+}
+
+.errorC {
+  color: #666666;
+}
+.error {
+  color: rgb(255, 68, 68);
+}
+.confrimBtn {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #0081ef;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+  height: 35px;
+  font-size: 16px;
+  transition: 0.3s ease-out;
+}
+.confrimBtnD {
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #666666;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  height: 35px;
+  font-size: 16px;
+}
+.loginOr {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container p {
+  margin: 2px;
+}
+.confrimBtn:hover {
+  color: #111111;
+}
+.icon {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  bottom: 0;
+  color: #111111;
+}
+@media screen and (max-width: 460px) {
+  .holder {
+    width: 100%;
+  }
+  .field {
+    width: 90%;
+  }
+  .fieldE {
+    width: 90%;
+  }
+  .fieldA {
+    max-width: none;
+    min-width: auto;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 839px) {
+  .mainContainer {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}

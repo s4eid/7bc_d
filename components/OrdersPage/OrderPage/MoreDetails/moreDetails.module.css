@@ -1,0 +1,79 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* border: 1px solid #666666; */
+}
+.holderC {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #0081ef;
+  border-radius: 5px;
+}
+.titleC {
+  width: 100%;
+  color: #0081ef;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.infoC {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.holder {
+  display: flex;
+  width: 50%;
+  word-wrap: break-word;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.holder p {
+  margin: 10px;
+  word-wrap: break-word;
+}
+.qContainer {
+  word-wrap: break-word;
+  width: 100%;
+  height: auto;
+  font-weight: bold;
+  color: #111111;
+}
+.aContainer {
+  width: 100%;
+  word-wrap: break-word;
+  height: auto;
+  color: #111111;
+}
+
+@media screen and (min-width: 1000px) {
+  .holder {
+    width: 33%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .holder {
+    width: 100%;
+  }
+  .qContainer {
+    width: 100%;
+  }
+  .aContainer {
+    width: 100%;
+  }
+}

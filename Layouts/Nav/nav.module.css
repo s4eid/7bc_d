@@ -1,0 +1,188 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color: #111111;
+  align-items: center;
+  color: #101010;
+}
+.container_active {
+  display: flex;
+  justify-content: space-around;
+  z-index: 999;
+  width: 100%;
+  height: 50px;
+  background: rgba(16, 16, 16, 0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: 2px solid #0081ef;
+  position: sticky;
+  align-items: center;
+  top: 0;
+}
+.container_active li {
+  color: white;
+}
+.linksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  color: #fff;
+  font-weight: bold;
+  width: 50%;
+  height: 100%;
+}
+.linksCU {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+.notActiveLink {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+.notActiveLinkD:hover {
+  color: #111111;
+  background-color: #fff;
+}
+.notActiveLinkD {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+.notActiveLink:hover {
+  color: #111111;
+  background-color: #fff;
+}
+.activeLink {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: #111111;
+  background-color: #fff;
+  cursor: pointer;
+}
+.notActiveLinkD ul {
+  display: none;
+}
+.notActiveLinkD:hover {
+  color: #111111;
+  background-color: #fff;
+}
+.notActiveLinkD:hover ul {
+  display: flex;
+}
+.subMenu {
+  position: absolute;
+  /* padding: 10px; */
+  list-style: none;
+  width: auto;
+  top: 60px;
+  border-radius: 5px;
+  padding: 30px;
+  min-width: 200px;
+  border: none;
+  height: 100px;
+  background-color: #111111;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  flex-direction: column;
+  color: #fff;
+}
+.subMenu li {
+  width: 100%;
+}
+.subMenu li:hover {
+  color: #0081ef;
+}
+.loginContainer {
+  width: 30%;
+  display: flex;
+  justify-content: right;
+}
+.loginContainer button {
+  background-color: #fff;
+  border: none;
+  color: #0081ef;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  margin-right: 20px;
+  transition: 0.3s ease-out;
+}
+.loginContainer button:hover {
+  background-color: #0081ef;
+  color: #fff;
+}
+
+@media screen and (max-width: 890px) {
+  .loginContainer {
+    width: 50%;
+    justify-content: center;
+  }
+  .loginContainer button {
+    margin-right: 0px;
+  }
+  .linksContainer {
+    font-size: 16px;
+  }
+}
+.menuContainer {
+  display: none;
+  text-align: center;
+  color: #fff;
+}
+.burgerOpen {
+  rotate: (45deg);
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .linksContainer {
+    display: none;
+  }
+  .menuContainer {
+    display: block;
+    width: 50%;
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .loginContainer button {
+    font-size: 14px;
+    width: 120px;
+  }
+  .menuContainer img {
+    width: 25px;
+    height: 25px;
+  }
+}
