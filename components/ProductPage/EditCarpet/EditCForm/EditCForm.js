@@ -4,7 +4,7 @@ import {
   initialValues,
 } from "../../../../validation/addProduct";
 import { Formik, Field, Form } from "formik";
-import editCForm from "./editCForm.module.css";
+import editCForm from "./EditCForm.module.css";
 
 export default function EditCForm() {
   return (
