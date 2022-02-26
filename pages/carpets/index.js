@@ -10,7 +10,9 @@ export default function Carpets() {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
   // const products = initialApolloState.ROOT_QUERY.products;
   return (
-    <>{!loading ? <CarpetsPage products={data.products} /> : <p>loading</p>}</>
+    <>
+      {!loading ? <CarpetsPage products={data.products} /> : <p>loading...</p>}
+    </>
   );
 }
 
