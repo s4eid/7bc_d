@@ -61,20 +61,7 @@ export default function NavBar({ children }) {
               </li>
             </Link>
             <Link href={"/addProduct"}>
-              <li className={nav.notActiveLinkD}>
-                Add
-                {/* <ul className={nav.subMenu}>
-                <Link href={"/add/carpet"}>
-                  <li>Add Carpet</li>
-                </Link>
-                <Link href={"/add/kilim"}>
-                  <li>Add Kilim</li>
-                </Link>
-                <Link href={"/add/tablecloth"}>
-                  <li>Add Tablecloth</li>
-                </Link>
-              </ul> */}
-              </li>
+              <li className={nav.notActiveLinkD}>Add</li>
             </Link>
             <li className={nav.notActiveLinkD}>
               <p>Users</p>
