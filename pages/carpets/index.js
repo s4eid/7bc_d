@@ -6,9 +6,9 @@ import { useQuery } from "@apollo/client";
 import Nav from "../../Layouts/Nav/Nav";
 import Footer from "../../Layouts/Footer/Footer";
 
-export default function Carpets() {
-  const { data, loading, error } = useQuery(GET_PRODUCTS);
-  // const products = initialApolloState.ROOT_QUERY.products;
+export default function Carpets({ initialApolloState }) {
+  // const { data, loading, error } = useQuery(GET_PRODUCTS);
+  const products = initialApolloState.ROOT_QUERY.products;
   return (
     <>
       {!loading ? <CarpetsPage products={data.products} /> : <p>loading...</p>}
@@ -16,7 +16,7 @@ export default function Carpets() {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCTS,
