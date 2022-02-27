@@ -3,7 +3,6 @@ import OurCarpets from "./Carpets/OurCarpets";
 import Filter from "./Filter/Filter";
 
 export default function CarpetsPage({ products }) {
-  console.log(products);
   return (
     <>
       <Filter />

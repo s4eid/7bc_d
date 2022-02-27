@@ -10,7 +10,6 @@ import { useMutation } from "@apollo/client";
 export default function Product({ p }) {
   const [deleteProduct, { data, loading, error }] = useMutation(DELETE_PRODUCT);
   const router = useRouter();
-  console.log(data);
   const [edit, setEdit] = useState(false);
   let imgs = [p.img_1, p.img_2, p.img_3];
   imgs = imgs.filter(function (item) {
