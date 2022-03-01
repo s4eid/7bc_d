@@ -4,7 +4,6 @@ const typeAdmin = gql`
     admin_id: ID!
     full_name: String!
     email: String!
-    password: String!
     created_at: String!
     phone_number: String!
     refresh_token: String

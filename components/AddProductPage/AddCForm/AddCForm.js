@@ -41,7 +41,7 @@ export default function AddCForm() {
             const weight = parseInt(data.weight);
             const height = parseInt(data.height);
             const width = parseInt(data.width);
-            const admin = "eaa2ec0c-c88d-4fff-91d3-a21494141e14";
+            const admin = "8a66748d-57aa-4fd7-9875-83a7396efdab";
             addProduct({
               variables: {
                 width,

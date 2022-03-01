@@ -14,10 +14,10 @@ export default function Products({ o }) {
         <p>{o.email}</p>
       </div>
       <div className={users.emailHolder}>
-        <p>{o.name}</p>
+        <p>{o.full_name}</p>
       </div>
       <div className={users.idHolder}>
-        <p>{o.id}</p>
+        <p>{o.admin_id}</p>
       </div>
     </div>
   );
