@@ -1,7 +1,7 @@
 import React from "react";
 import moreDetails from "./moreDetails.module.css";
 
-export default function MoreDetails() {
+export default function MoreDetails({ orderInfo }) {
   return (
     <div className={moreDetails.mainContainer}>
       <div className={moreDetails.holderC}>
@@ -11,11 +11,13 @@ export default function MoreDetails() {
         <div className={moreDetails.infoC}>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Price:</p>
-            <p className={moreDetails.aContainer}>50$</p>
+            <p className={moreDetails.aContainer}>
+              {orderInfo.shipping_price}$
+            </p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Company:</p>
-            <p className={moreDetails.aContainer}>Express</p>
+            <p className={moreDetails.aContainer}>{orderInfo.company}</p>
           </div>
         </div>
       </div>
@@ -26,25 +28,23 @@ export default function MoreDetails() {
         <div className={moreDetails.infoC}>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Country:</p>
-            <p className={moreDetails.aContainer}>Turkey</p>
+            <p className={moreDetails.aContainer}>{orderInfo.country}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>City:</p>
-            <p className={moreDetails.aContainer}>Nevsehir</p>
+            <p className={moreDetails.aContainer}>{orderInfo.city}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Area:</p>
-            <p className={moreDetails.aContainer}>Merkez</p>
+            <p className={moreDetails.aContainer}>{orderInfo.area}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>PostalCode:</p>
-            <p className={moreDetails.aContainer}>50100</p>
+            <p className={moreDetails.aContainer}>{orderInfo.zip_code}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Address:</p>
-            <p className={moreDetails.aContainer}>
-              Esentepe mah golbar sok no:2 Nevsehir/Merkez
-            </p>
+            <p className={moreDetails.aContainer}>{orderInfo.address}</p>
           </div>
         </div>
       </div>
@@ -55,28 +55,28 @@ export default function MoreDetails() {
         <div className={moreDetails.infoC}>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>PaidPrice:</p>
-            <p className={moreDetails.aContainer}>1500$</p>
+            <p className={moreDetails.aContainer}>{orderInfo.paid_price}$</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>CartType:</p>
-            <p className={moreDetails.aContainer}>Visa</p>
+            <p className={moreDetails.aContainer}>{orderInfo.card_type}</p>
           </div>
           <div className={moreDetails.holder}>
-            <p className={moreDetails.qContainer}>Cart company:</p>
-            <p className={moreDetails.aContainer}>American Express</p>
+            <p className={moreDetails.qContainer}>Card Family:</p>
+            <p className={moreDetails.aContainer}>{orderInfo.card_family}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Currency:</p>
-            <p className={moreDetails.aContainer}>$</p>
+            <p className={moreDetails.aContainer}>{orderInfo.currency}</p>
           </div>
           <div className={moreDetails.holder}>
-            <p className={moreDetails.qContainer}>Bin number:</p>
-            <p className={moreDetails.aContainer}>45654421</p>
+            <p className={moreDetails.qContainer}>card number:</p>
+            <p className={moreDetails.aContainer}>{orderInfo.card_number}</p>
           </div>
-          <div className={moreDetails.holder}>
+          {/* <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Convercation Id:</p>
             <p className={moreDetails.aContainer}>fdjsd54fsd5s45</p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={moreDetails.holderC}>
@@ -86,17 +86,15 @@ export default function MoreDetails() {
         <div className={moreDetails.infoC}>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Email:</p>
-            <p className={moreDetails.aContainer}>
-              saeid.noormohammad@gmail.com
-            </p>
+            <p className={moreDetails.aContainer}>{orderInfo.email}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Full name:</p>
-            <p className={moreDetails.aContainer}>saeid noormohammad</p>
+            <p className={moreDetails.aContainer}>{orderInfo.owner}</p>
           </div>
           <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Phone number:</p>
-            <p className={moreDetails.aContainer}>0556012382</p>
+            <p className={moreDetails.aContainer}>{orderInfo.phone_number}</p>
           </div>
         </div>
       </div>
@@ -106,12 +104,8 @@ export default function MoreDetails() {
         </div>
         <div className={moreDetails.infoC}>
           <div className={moreDetails.holder}>
-            <p className={moreDetails.qContainer}>Date Placed:</p>
-            <p className={moreDetails.aContainer}>10/9/2021</p>
-          </div>
-          <div className={moreDetails.holder}>
             <p className={moreDetails.qContainer}>Status:</p>
-            <p className={moreDetails.aContainer}>Delivered in 10/9/2021</p>
+            <p className={moreDetails.aContainer}>{orderInfo.status}</p>
           </div>
         </div>
       </div>

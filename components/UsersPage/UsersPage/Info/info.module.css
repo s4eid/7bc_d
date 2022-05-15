@@ -1,0 +1,30 @@
+.mainContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #111111;
+  color: #fff;
+  border-radius: 5px;
+}
+.infoHolder {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  /* max-width: 200px; */
+  align-content: center;
+  /* border: 1px solid #666666; */
+  text-align: center;
+  width: 200px;
+}
+.title {
+  font-weight: bold;
+}
+.infoC {
+  color: #0081ef;
+  font-size: 15px;
+  word-wrap: break-word;
+}

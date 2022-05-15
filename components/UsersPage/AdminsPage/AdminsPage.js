@@ -13,7 +13,6 @@ export default function AdminsPage({ adminsD }) {
           <Users key={o.admin_id} o={o} />
         ))}
       </div>
-      {/* <MoreDetails /> */}
     </div>
   );
 }

@@ -11,7 +11,7 @@ export const upload_cloud = async (img_1, img_2, img_3) => {
         formData.append("file", imageArray[i]);
         formData.append("upload_preset", "oipp5ox6");
         const data = await axios.post(
-          "https://api.cloudinary.com/v1_1/nuzem/image/upload",
+          process.env.NEXT_PUBLIC_CLOUDINARY,
           formData
         );
         public_ids.push(data.data.public_id);

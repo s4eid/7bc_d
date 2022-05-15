@@ -3,9 +3,8 @@ import orders from "./orders.module.css";
 import Order from "./Order/Order";
 // import Info from "./Info/Info";
 import Title from "./Title/Title";
-import { ordersItems } from "../../data/ordersItems";
 
-export default function OrdersPage() {
+export default function OrdersPage({ _orders }) {
   return (
     <div className={orders.mainContainer}>
       <input className={orders.searchBox} type="text" placeholder="Search..." />
@@ -13,7 +12,7 @@ export default function OrdersPage() {
       <div className={orders.titleContainer}>
         <Title />
       </div>
-      {ordersItems.map((o, index) => (
+      {_orders.map((o, index) => (
         <Order key={index} o={o} />
       ))}
     </div>

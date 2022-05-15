@@ -17,7 +17,7 @@ export default function AddCForm() {
   return (
     <div className={addCForm.mainContainer}>
       <div className={addCForm.title}>
-        <p>Add Carpet</p>
+        <p>Add Product</p>
       </div>
       <div className={addCForm.container}>
         <Formik

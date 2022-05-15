@@ -27,11 +27,6 @@
   text-align: center;
 }
 
-.searchC {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-}
 .info {
   padding-left: 10px;
   font-weight: bold;
@@ -39,22 +34,6 @@
 }
 .info p {
   border-bottom: 2px solid #0081ef;
-}
-.fieldE {
-  width: 100%;
-  color: #fff;
-  outline: none;
-  position: relative;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: #111111;
-  height: 40px;
-  font-size: 16px;
-  text-transform: lowercase;
-}
-
-.fieldE::placeholder {
-  text-align: center;
 }
 
 @media screen and (max-width: 733px) {

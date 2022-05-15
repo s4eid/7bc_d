@@ -1,12 +1,44 @@
 import React from "react";
-import {
-  addProductSchema,
-  initialValues,
-} from "../../../../validation/addProduct";
+import { addProductSchema } from "../../../../validation/addProduct";
 import { Formik, Field, Form } from "formik";
 import editCForm from "./EditCForm.module.css";
+import { useRouter } from "next/router";
+import { useMutation } from "@apollo/client";
+import { EDIT_PRODUCT } from "../../../../graphql_f/product/Mutation/editProduct";
 
-export default function EditCForm() {
+export default function EditCForm({
+  product_id,
+  name,
+  weight,
+  price,
+  type,
+  family,
+  age,
+  width,
+  height,
+  stock,
+  origin,
+  description,
+}) {
+  const [editProduct, { data, loading, error }] = useMutation(EDIT_PRODUCT);
+  const router = useRouter();
+  const initialValues = {
+    name,
+    width,
+    height,
+    stock,
+    origin,
+    age,
+    family,
+    details: description,
+    weight,
+    price,
+    type,
+    product_id,
+    // img_1: null,
+    // img_2: null,
+    // img_3: null,
+  };
   return (
     <div className={editCForm.mainContainer}>
       <div className={editCForm.title}>
@@ -17,6 +49,32 @@ export default function EditCForm() {
           initialValues={initialValues}
           validationSchema={addProductSchema}
           onSubmit={async (data) => {
+            const _price = parseInt(data.price);
+            const _pieces = parseInt(data.stock);
+            const _age = parseInt(data.age);
+            const _weight = parseInt(data.weight);
+            const _height = parseInt(data.height);
+            const _width = parseInt(data.width);
+            console.log(data);
+            await editProduct({
+              variables: {
+                name: data.name,
+                price: _price,
+                type: data.type,
+                width: _width,
+                height: _height,
+                pieces: _pieces,
+                weight: _weight,
+                age: _age,
+                description: data.details,
+                family: data.family,
+                origin: data.origin,
+                productId: data.product_id,
+              },
+              onCompleted: () => {
+                router.push("/carpets");
+              },
+            });
             console.log(data);
           }}
         >
@@ -52,6 +110,7 @@ export default function EditCForm() {
                     placeholder={"Stock"}
                     className={editCForm.field}
                     name="stock"
+                    inputMode="numeric"
                     enterKeyHint="next"
                     required
                   />
@@ -110,7 +169,6 @@ export default function EditCForm() {
                     className={editCForm.fieldE}
                     name="origin"
                     enterKeyHint="next"
-                    required
                   >
                     <option value="" selected disabled hidden>
                       Origin
@@ -133,7 +191,6 @@ export default function EditCForm() {
                     name="age"
                     inputMode="numeric"
                     enterKeyHint="next"
-                    required
                   />
                 </div>
               </div>
@@ -180,7 +237,6 @@ export default function EditCForm() {
                     as="textarea"
                     name="details"
                     enterKeyHint="next"
-                    required
                   />
                 </div>
                 <div className={editCForm.holder}>
@@ -222,7 +278,7 @@ export default function EditCForm() {
                     <option value="tablecloth">Tablecloth</option>
                   </Field>
                 </div>
-                <div className={editCForm.holder}>
+                {/* <div className={editCForm.holder}>
                   <input
                     type="file"
                     id="img_1"
@@ -231,10 +287,9 @@ export default function EditCForm() {
                     onChange={(e) => setFieldValue("img_1", e.target.files[0])}
                     required
                   />
-                </div>
+                </div> */}
               </div>
-              <div className={editCForm.inputsContainer}>
-                <div className={editCForm.inputsContainer}>
+              {/* <div className={editCForm.inputsContainer}>
                   <div className={editCForm.holder}>
                     <input
                       type="file"
@@ -257,8 +312,7 @@ export default function EditCForm() {
                       }
                     />
                   </div>
-                </div>
-              </div>
+              </div> */}
               <div className={editCForm.loginOr}>
                 <button
                   type="submit"

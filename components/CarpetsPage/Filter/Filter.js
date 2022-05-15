@@ -1,11 +1,8 @@
 import React from "react";
 import filter from "./filter.module.css";
-export default function Filter() {
+export default function Filter({ index }) {
   return (
     <div className={filter.mainContainer}>
-      <div className={filter.searchC}>
-        <input type="text" className={filter.fieldE} placeholder="Search..." />
-      </div>
       <div className={filter.selectContainer}>
         <select name="price" id="price">
           <option selected disabled hidden>
@@ -33,7 +30,7 @@ export default function Filter() {
         </select>
       </div>
       <div className={filter.info}>
-        <p>Pieces:1500</p>
+        <p>Pieces:{index}</p>
       </div>
     </div>
   );

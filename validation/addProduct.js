@@ -12,10 +12,12 @@ export const initialValues = {
   weight: null,
   price: null,
   type: null,
-  img_1: null,
-  img_2: null,
-  img_3: null,
+  product_id: null,
+  // img_1: null,
+  // img_2: null,
+  // img_3: null,
 };
+
 export const addProductSchema = Yup.object().shape({
   name: Yup.string()
     .typeError("Should be string")

@@ -17,6 +17,8 @@ export const GET_PRODUCT = gql`
       pieces
       origin
       description
+      type
+      weight
       width
       height
     }

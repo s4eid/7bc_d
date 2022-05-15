@@ -39,7 +39,11 @@ export default function createApolloClient() {
     cache: new InMemoryCache({
       typePolicies: {
         products: {
-          keyFields: ["product_id"],
+          edges: {
+            node: {
+              keyFields: ["product_id"],
+            },
+          },
         },
       },
     }),

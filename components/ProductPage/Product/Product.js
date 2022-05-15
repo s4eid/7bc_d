@@ -28,6 +28,7 @@ export default function Product({ p }) {
               Edit
             </button>
             <button
+              disabled={true}
               onClick={() => {
                 let deleteOr = confirm("Are You Sure Wanna Delete Product?");
                 if (deleteOr) {
@@ -62,7 +63,20 @@ export default function Product({ p }) {
           </div>
         </div>
       ) : (
-        <EditProductPage />
+        <EditProductPage
+          product_id={p.product_id}
+          name={p.name}
+          family={p.family}
+          age={p.age}
+          width={p.width}
+          height={p.height}
+          weight={p.weight}
+          price={p.price}
+          type={p.type}
+          stock={p.pieces}
+          origin={p.origin}
+          description={p.description}
+        />
       )}
     </>
   );

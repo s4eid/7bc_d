@@ -1,11 +1,6 @@
+import cloudinary from "cloudinary";
 export const deleteProduct = async (product_id, pool) => {
   try {
-    // const data = await pool.query(`SELECT * FROM product`);
-    // const another = await pool.query(
-    //   `SELECT * FROM product_img WHERE product_id=$1`,
-    //   [product_id]
-    // );
-    // console.log(another.rows[0]);
     await pool.query(
       `
       DELETE FROM product_details WHERE product_id=$1
@@ -24,18 +19,26 @@ export const deleteProduct = async (product_id, pool) => {
       `,
       [product_id]
     );
-    await pool.query(
+    const images = await pool.query(
       `
-      DELETE FROM product_img WHERE product_id=$1
+      DELETE FROM product_img WHERE product_id=$1 RETURNING *
       `,
       [product_id]
     );
+    const img = images.rows[0];
     const data = await pool.query(
       `
       DELETE FROM product WHERE product_id=$1 RETURNING *
       `,
       [product_id]
     );
+    await cloudinary.v2.api.delete_resources(
+      [img.img1_id, img.img2_id, img.img3_id],
+      function (error, result) {
+        console.log(result, error);
+      }
+    );
+
     return data.rows[0];
   } catch (error) {
     console.log(error);

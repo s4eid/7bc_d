@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import slide from "./slide.module.css";
 import Image from "next/image";
-import { Magnifier } from "react-image-magnifiers";
 
 export default function ChildsC({ img, direction, page }) {
   return (

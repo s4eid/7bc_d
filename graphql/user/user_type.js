@@ -1,12 +1,11 @@
 import { gql } from "apollo-server-micro";
-const typeAdmin = gql`
+const typeUser = gql`
   type User {
     user_id: ID!
-    full_name: String!
+    name: String!
     email: String!
     password: String!
     created_at: String!
-    phone_number: String!
     refresh_token: String
   }
   type addUserAddress {
@@ -16,7 +15,7 @@ const typeAdmin = gql`
     country: String!
     city: String!
     area: String!
-    zip_code: Int!
+    zip_code: String!
     ip: String!
     created_at: String!
   }
@@ -33,45 +32,49 @@ const typeAdmin = gql`
   }
   type getUser {
     user_id: ID!
-    full_name: String!
+    name: String!
     email: String!
     password: String!
     created_at: String!
-    phone_number: String!
     refresh_token: String
+    verified: Boolean
     user_payment_id: ID
     owner: String
-    cart_number: String
+    card_number: String
+    card_type: String
+    card_family: String
+    card_association: String
     expire_m: Int
     expire_y: Int
     cvv: Int
-    company: String
-    type: String
+    phone_number: String
     user_address_id: ID
     address: String
     country: String
     city: String
     area: String
-    zip_code: Int
+    zip_code: String
     ip: String
   }
+  type getUsers {
+    email: String!
+    user_id: ID!
+    name: String!
+    verified: Boolean
+  }
   type Query {
-    users: [getUser!]!
+    users: [getUsers!]
+    user(user_id: ID!): getUser
   }
   type Mutation {
-    addUser(
-      full_name: String!
-      phone_number: String!
-      email: String!
-      password: String!
-    ): User!
-    deleteUser(user_id: ID!): User
+    addUser(name: String!, email: String!, password: String!): User!
+    deleteUser(user_id: ID!): String
     addUser_address(
       address: String!
       country: String!
       city: String!
       area: String!
-      zip_code: Int!
+      zip_code: String!
       ip: String!
       user_id: ID!
     ): addUserAddress!
@@ -87,4 +90,4 @@ const typeAdmin = gql`
     ): addUserPayment!
   }
 `;
-export default typeAdmin;
+export default typeUser;

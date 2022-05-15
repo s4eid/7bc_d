@@ -29,6 +29,12 @@ const typeProduct = gql`
     img_3: String
     img3_id: String
   }
+  type searchProductR {
+    name: String!
+    type: String!
+    made: String
+    product_id: ID!
+  }
   type ProductCreated {
     product_id: ID!
     name: String!
@@ -36,9 +42,28 @@ const typeProduct = gql`
     type: String!
     created_at: String!
   }
+  type PageInfo {
+    startCursor: String
+    hasNextPage: Boolean
+  }
+  type Edge {
+    node: [Product]
+  }
+  type GetProducts {
+    edges: Edge
+    pageInfo: PageInfo
+  }
+  type searchProductR {
+    name: String!
+    type: String!
+    made: String
+    product_id: ID!
+    img_1: String
+  }
   type Query {
-    products: [Product!]
+    products(type: String!, first: Int, afterCursor: String): GetProducts
     product(product_id: ID!): Product!
+    searchProduct(text: String!): [searchProductR]
   }
   type Mutation {
     addProduct(
@@ -63,6 +88,21 @@ const typeProduct = gql`
       img3_id: String
     ): ProductCreated!
     deleteProduct(product_id: ID!): Product
+    editProduct(
+      product_id: ID!
+      name: String!
+      price: Int!
+      type: String!
+      width: Int!
+      height: Int!
+      origin: String
+      age: Int
+      family: String
+      main_color: String
+      description: String
+      weight: Int!
+      pieces: Int!
+    ): Product
   }
 `;
 export default typeProduct;

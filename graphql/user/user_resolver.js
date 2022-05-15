@@ -3,21 +3,31 @@ import { addUser } from "../../Querys/user/addUser";
 import { deleteUser } from "../../Querys/user/deleteUser";
 import { addUser_address } from "../../Querys/user/addUser_address";
 import { addUser_payment } from "../../Querys/user/addUser_payment";
-const resolverAdmin = {
+import { getUser } from "../../Querys/user/getUser";
+const resolverUser = {
   Query: {
     async users(_, __, { pool }) {
       const data = await getUsers(pool);
       return data;
     },
+    async user(_, { user_id }, { pool }) {
+      const data = await getUser(user_id, pool);
+      return data;
+    },
   },
   Mutation: {
-    async addUser(_, { full_name, email, password, phone_number }, { pool }) {
+    async addUser(
+      _,
+      { full_name, email, password, phone_number },
+      { pool, res }
+    ) {
       const data = await addUser(
         full_name,
         email,
         password,
         phone_number,
-        pool
+        pool,
+        res
       );
       return data;
     },
@@ -62,4 +72,4 @@ const resolverAdmin = {
     },
   },
 };
-export default resolverAdmin;
+export default resolverUser;

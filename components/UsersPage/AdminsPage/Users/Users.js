@@ -3,7 +3,7 @@ import Image from "next/image";
 import users from "./users.module.css";
 import { useRouter } from "next/router";
 
-export default function Products({ o }) {
+export default function Users({ o }) {
   const router = useRouter();
   return (
     <div

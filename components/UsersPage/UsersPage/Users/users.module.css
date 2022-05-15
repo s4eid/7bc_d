@@ -1,0 +1,61 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  /* max-height: 100px; */
+  padding: 10px;
+  color: #666666;
+  border-bottom: 1px solid #666666;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.emailHolder {
+  width: 33%;
+  color: #111111;
+  text-align: center;
+}
+.idHolder {
+  width: 33%;
+  color: #0081ef;
+  text-align: center;
+}
+.nameHolder {
+  font-weight: bold;
+  text-align: center;
+  width: 33%;
+}
+.deleteContainer {
+  position: absolute;
+  color: red;
+  cursor: pointer;
+  top: 2px;
+  right: 0px;
+}
+.verifiedCon {
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  color: green;
+}
+@media screen and (max-width: 660px) {
+  .mainContainer {
+    font-size: 15px;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .emailHolder {
+    width: 100%;
+  }
+  .nameHolder {
+    width: 100%;
+  }
+  .idHolder {
+    width: 100%;
+  }
+}
