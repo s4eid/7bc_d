@@ -9,7 +9,7 @@ export const order_status = async (order_id, email, status, pool) => {
       status,
       order_id,
     ]);
-    const url = `${process.env.URL}/orders/${order_id}`;
+    const url = `${process.env.URL}/account/orders/${order_id}`;
     if (status === 1) {
       const page = order_update_shipping(url);
       const message = {
