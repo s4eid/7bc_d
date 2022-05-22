@@ -9,7 +9,7 @@ import ProdcutSearch from "../ProductSearch/ProductSearch";
 export default function CarpetsPage({ products, pageInfo, refetch }) {
   const [search, setSearch] = useState("");
   const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
-  console.log(data?.searchProduct);
+  // console.log(data?.searchProduct);
   return (
     <div className={carpetPage.mainContainer}>
       <div className={carpetPage.searchC}>
@@ -24,7 +24,7 @@ export default function CarpetsPage({ products, pageInfo, refetch }) {
           placeholder="Search..."
         />
       </div>
-      <Filter index={products.length} />
+      {/* <Filter index={products.length} /> */}
       {data?.searchProduct.length === 0 || !data ? (
         <OurCarpets products={products} pageInfo={pageInfo} refetch={refetch} />
       ) : (

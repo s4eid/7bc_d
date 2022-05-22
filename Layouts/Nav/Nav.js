@@ -27,7 +27,7 @@ export default function NavBar({ children }) {
                 Carpet
               </li>
             </Link>
-            <Link href="/kilims">
+            {/* <Link href="/kilims">
               <li
                 className={
                   router.pathname === "/kilims"
@@ -37,7 +37,7 @@ export default function NavBar({ children }) {
               >
                 Kilim
               </li>
-            </Link>
+            </Link> */}
             {/* <Link href="/tablecloth">
               <li
                 className={
