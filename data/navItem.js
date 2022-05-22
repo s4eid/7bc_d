@@ -4,16 +4,16 @@ export const navItemsS = [
     link: "/carpets",
     id: "1",
   },
-  {
-    name: "Kilim",
-    link: "/kilim",
-    id: "2",
-  },
-  {
-    name: "Tablecloth",
-    link: "/tablecloth",
-    id: "3",
-  },
+  // {
+  //   name: "Kilim",
+  //   link: "/kilim",
+  //   id: "2",
+  // },
+  // {
+  //   name: "Tablecloth",
+  //   link: "/tablecloth",
+  //   id: "3",
+  // },
   {
     name: "Add Product",
     link: "/addProduct",
@@ -26,12 +26,12 @@ export const navItemsS = [
   },
   {
     name: "Admins",
-    link: "/admins",
+    link: "/users/admins",
     id: "8",
   },
   {
     name: "Clients",
-    link: "/clients",
+    link: "/users/clients",
     id: "9",
   },
 ];

@@ -11,6 +11,9 @@ export default function NavBar({ children }) {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
   const [openM, setOpenM] = useState(false);
+  useEffect(() => {
+    setNavOpen(false);
+  }, [router]);
   return (
     <>
       <div className={nav.container}>
