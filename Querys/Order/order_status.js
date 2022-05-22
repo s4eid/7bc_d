@@ -1,4 +1,5 @@
 import sendGrid from "../../emailConfig";
+
 import { order_update_shipping } from "../../emailTemplates/order_update_shipping";
 import { order_update_delivered } from "../../emailTemplates/order_update_delivered";
 
