@@ -4,20 +4,29 @@ import productItems from "./ourProduct.module.css";
 import { useRouter } from "next/router";
 
 export default function Carpet({ c }) {
+  console.log(c);
   const router = useRouter();
   return (
     <div
       className={productItems.productMainHolder}
-      onClick={() => router.push(`/carpets/${c.product_id}`)}
+      onClick={() => {
+        router.push(`/carpets/${c.product_id}`);
+      }}
     >
       <div className={productItems.productContainer}>
-        <Image src={c.img_1} alt="carpets" layout="fill" loading="lazy" />
+        <Image
+          className={c.pieces <= 0 ? productItems.notAvailable : null}
+          src={c.img_1}
+          alt="carpets"
+          layout="fill"
+          loading="lazy"
+        />
       </div>
       <div className={productItems.detailsContainer}>
         <div className={productItems.infoHolder}>
           <p className={productItems.detailName}>{c.name}</p>
           <p className={productItems.detailSize}>
-            {c.width}x{c.height}
+            {c.pieces > 0 ? `${c.width}x${c.height}` : "Not Available"}
           </p>
         </div>
         <div className={productItems.infoHolderP}>
