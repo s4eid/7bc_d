@@ -3,16 +3,19 @@ export const EDIT_PRODUCT = gql`
   mutation (
     $productId: ID!
     $name: String!
-    $price: Int!
+    $price: String!
     $type: String!
-    $width: Int!
-    $height: Int!
-    $weight: Int!
+    $width: String!
+    $height: String!
+    $weight: String!
     $pieces: Int!
     $age: Int
     $family: String
     $description: String
     $origin: String
+    $made: String
+    $material: String
+    $shape: String
   ) {
     editProduct(
       product_id: $productId
@@ -27,8 +30,9 @@ export const EDIT_PRODUCT = gql`
       family: $family
       description: $description
       origin: $origin
-    ) {
-      name
-    }
+      made: $made
+      material: $material
+      shape: $shape
+    )
   }
 `;

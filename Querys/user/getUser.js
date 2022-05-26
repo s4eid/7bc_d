@@ -11,7 +11,6 @@ export const getUser = async (user_id, pool) => {
 	 a.user_id=$1`,
       [user_id]
     );
-    console.log(data.rows[0]);
     return data.rows[0];
   } catch (error) {
     console.log(error);

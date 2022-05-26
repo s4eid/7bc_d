@@ -35,12 +35,12 @@ export default function AddCForm() {
             data.img1_id = public_ids[0];
             data.img2_id = public_ids[1];
             data.img3_id = public_ids[2];
-            const price = parseInt(data.price);
+            const price = data.price;
             const pieces = parseInt(data.stock);
             const age = parseInt(data.age);
-            const weight = parseInt(data.weight);
-            const height = parseInt(data.height);
-            const width = parseInt(data.width);
+            const weight = data.weight;
+            const height = data.height;
+            const width = data.width;
             const admin = "8a66748d-57aa-4fd7-9875-83a7396efdab";
             addProduct({
               variables: {
@@ -61,6 +61,9 @@ export default function AddCForm() {
                 weight,
                 age,
                 family: data.family,
+                made: data.made,
+                shape: data.shape,
+                material: data.material,
                 // main_color: null,
                 description: data.details,
               },
@@ -123,7 +126,6 @@ export default function AddCForm() {
                     placeholder={"Height"}
                     className={addCForm.field}
                     name="height"
-                    inputMode="numeric"
                     enterKeyHint="next"
                     required
                   />
@@ -142,7 +144,6 @@ export default function AddCForm() {
                     name="width"
                     placeholder="Width"
                     className={addCForm.fieldE}
-                    inputMode="numeric"
                     enterKeyHint="next"
                     required
                   />
@@ -211,9 +212,74 @@ export default function AddCForm() {
                     className={addCForm.fieldE}
                     name="price"
                     enterKeyHint="next"
-                    inputMode="numeric"
                     required
                   />
+                </div>
+              </div>
+              <div className={addCForm.inputsContainer}>
+                <div className={addCForm.holder}>
+                  {errors.made && touched.made ? (
+                    <label className={addCForm.error}>{errors.made}</label>
+                  ) : (
+                    <label className={addCForm.errorC}>Made</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Made"}
+                    className={addCForm.fieldE}
+                    name="made"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Made
+                    </option>
+                    <option value="hand">Hand</option>
+                    <option value="machine">Machine</option>
+                    <option value="machine&hand">Machine&Hand</option>
+                  </Field>
+                </div>
+                <div className={addCForm.holder}>
+                  {errors.material && touched.material ? (
+                    <label className={addCForm.error}>{errors.material}</label>
+                  ) : (
+                    <label className={addCForm.errorC}>Material</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Material"}
+                    className={addCForm.fieldE}
+                    name="material"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Material
+                    </option>
+                    <option value="wool">wool</option>
+                    <option value="silk">silk</option>
+                    <option value="bamboo">bamboo</option>
+                  </Field>
+                </div>
+                <div className={addCForm.holder}>
+                  {errors.shape && touched.shape ? (
+                    <label className={addCForm.error}>{errors.shape}</label>
+                  ) : (
+                    <label className={addCForm.errorC}>Shape</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Shape"}
+                    className={addCForm.fieldE}
+                    name="shape"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Shape
+                    </option>
+                    <option value="runner">Runner</option>
+                    <option value="normal">Normal</option>
+                    <option value="circle">Circl</option>
+                    <option value="square">Square</option>
+                  </Field>
                 </div>
               </div>
               <div className={addCForm.inputsContainer}>
@@ -241,7 +307,6 @@ export default function AddCForm() {
                     placeholder={"Weight"}
                     className={addCForm.fieldE}
                     name="weight"
-                    inputMode="numeric"
                     enterKeyHint="next"
                     required
                   />
@@ -302,28 +367,21 @@ export default function AddCForm() {
                 </div>
               </div>
               <div className={addCForm.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={
-                    !isValid ? addCForm.confrimBtnD : addCForm.confrimBtn
-                  }
-                >
-                  Add product
-                </button>
-                {/* <button
-                  onClick={() => setIsRegister(!isRegister)}
-                  className={register.orRegister}
-                >
-                  Have Account?
-                </button> */}
-                {/* {loading ? ( */}
-                {/* <Loading /> */}
-                {/* ) : error ? ( */}
-                {/* <Error error={errorLogin} /> */}
-                {/* ) : ( */}
-                <></>
-                {/* )} */}
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={
+                      !isValid ? addCForm.confrimBtnD : addCForm.confrimBtn
+                    }
+                  >
+                    Add product
+                  </button>
+                ) : (
+                  <button disabled={true} className={addCForm.button}>
+                    <span className={addCForm.buttonLoading}> </span>
+                  </button>
+                )}
               </div>
             </Form>
           )}

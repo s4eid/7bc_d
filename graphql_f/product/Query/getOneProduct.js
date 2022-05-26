@@ -21,6 +21,9 @@ export const GET_PRODUCT = gql`
       weight
       width
       height
+      made
+      shape
+      material
     }
   }
 `;

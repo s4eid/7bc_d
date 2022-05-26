@@ -12,6 +12,9 @@ export const addProduct = async (
   description,
   weight,
   pieces,
+  made,
+  material,
+  shape,
   img_1,
   img1_id,
   img_2,
@@ -26,15 +29,15 @@ export const addProduct = async (
   try {
     const data = await pool.query(
       `
-      INSERT INTO product(name,price,admin_id,type) VALUES($1,$2,$3,$4) RETURNING *
+      INSERT INTO product(name,price,admin_id,type,made) VALUES($1,$2,$3,$4,$5) RETURNING product_id
       `,
-      [name, price, admin_id, type]
+      [name, price, admin_id, type, made]
     );
     const product_id = data.rows[0].product_id;
     await pool.query(
       `
-      INSERT INTO product_details(width,height,origin,age,family,description,weight,main_color,product_id)
-      VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+      INSERT INTO product_details(width,height,origin,age,family,description,weight,main_color,material,shape,product_id)
+      VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
       `,
       [
         width,
@@ -45,6 +48,8 @@ export const addProduct = async (
         description,
         weight,
         main_color,
+        material,
+        shape,
         product_id,
       ]
     );
@@ -69,7 +74,7 @@ export const addProduct = async (
       `,
       [pieces, product_id]
     );
-    return data.rows[0];
+    return "done";
   } catch (error) {
     console.log(error);
   }

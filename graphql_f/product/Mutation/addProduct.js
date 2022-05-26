@@ -3,25 +3,29 @@ import { gql } from "@apollo/client";
 export const ADD_PRODUCT = gql`
   mutation (
     $name: String!
-    $price: Int!
+    $price: String!
     $adminId: ID!
     $type: String!
     $pieces: Int!
-    # $percent: Int!
-    # $active: Boolean!
-    $width: Int!
-    $height: Int!
+    $width: String!
+    $height: String!
     $origin: String
-    $weight: Int!
+    $weight: String!
     $age: Int
     $family: String
     # $main_color: String
     $description: String
+    $made: String
+    $material: String
+    $shape: String
+    # $percent: Int!
+    # $active: Boolean!
+    # $discount_name: String
     $img_1: String!
     $img1_id: String!
     $img_2: String
     $img2_id: String
-    $img_3: String # $discount_name: String
+    $img_3: String
     $img3_id: String
   ) {
     addProduct(
@@ -30,9 +34,7 @@ export const ADD_PRODUCT = gql`
       admin_id: $adminId
       type: $type
       pieces: $pieces
-      # percent: $percent
       weight: $weight
-      # active: $active
       width: $width
       height: $height
       origin: $origin
@@ -40,16 +42,18 @@ export const ADD_PRODUCT = gql`
       family: $family
       # main_color: $main_color
       description: $description
+      made: $made
+      material: $material
+      shape: $shape
+      # percent: $percent
+      # active: $active
+      # discount_name: $discount_name
       img_1: $img_1
       img1_id: $img1_id
       img_2: $img_2
       img2_id: $img2_id
-      img_3: $img_3 # discount_name: $discount_name
+      img_3: $img_3
       img3_id: $img3_id
-    ) {
-      name
-      price
-      product_id
-    }
+    )
   }
 `;

@@ -56,6 +56,10 @@ export default function Product({ p }) {
               age={p.age}
               width={p.width}
               height={p.height}
+              price={p.price}
+              shape={p.shape}
+              material={p.material}
+              made={p.made}
               stock={p.pieces}
               origin={p.origin}
               description={p.description}
@@ -76,6 +80,9 @@ export default function Product({ p }) {
           stock={p.pieces}
           origin={p.origin}
           description={p.description}
+          shape={p.shape}
+          material={p.material}
+          made={p.made}
         />
       )}
     </>

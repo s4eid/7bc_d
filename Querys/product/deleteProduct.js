@@ -21,14 +21,14 @@ export const deleteProduct = async (product_id, pool) => {
     );
     const images = await pool.query(
       `
-      DELETE FROM product_img WHERE product_id=$1 RETURNING *
+      DELETE FROM product_img WHERE product_id=$1  
       `,
       [product_id]
     );
     const img = images.rows[0];
     const data = await pool.query(
       `
-      DELETE FROM product WHERE product_id=$1 RETURNING *
+      DELETE FROM product WHERE product_id=$1 
       `,
       [product_id]
     );
@@ -38,8 +38,7 @@ export const deleteProduct = async (product_id, pool) => {
         console.log(result, error);
       }
     );
-
-    return data.rows[0];
+    return "done";
   } catch (error) {
     console.log(error);
   }

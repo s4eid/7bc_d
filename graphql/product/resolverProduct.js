@@ -38,6 +38,9 @@ const resolverProduct = {
         description,
         weight,
         pieces,
+        made,
+        material,
+        shape,
         img_1,
         img1_id,
         img_2,
@@ -64,6 +67,9 @@ const resolverProduct = {
         description,
         weight,
         pieces,
+        made,
+        material,
+        shape,
         img_1,
         img1_id,
         img_2,
@@ -97,6 +103,9 @@ const resolverProduct = {
         description,
         weight,
         pieces,
+        made,
+        material,
+        shape,
       },
       { pool }
     ) {
@@ -114,6 +123,9 @@ const resolverProduct = {
         description,
         weight,
         pieces,
+        made,
+        material,
+        shape,
         pool
       );
       return data;

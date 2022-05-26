@@ -9,7 +9,6 @@ import ProdcutSearch from "../ProductSearch/ProductSearch";
 export default function CarpetsPage({ products, pageInfo, refetch }) {
   const [search, setSearch] = useState("");
   const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
-  // console.log(data?.searchProduct);
   return (
     <div className={carpetPage.mainContainer}>
       <div className={carpetPage.searchC}>

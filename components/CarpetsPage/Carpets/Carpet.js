@@ -4,7 +4,6 @@ import productItems from "./ourProduct.module.css";
 import { useRouter } from "next/router";
 
 export default function Carpet({ c }) {
-  console.log(c);
   const router = useRouter();
   return (
     <div

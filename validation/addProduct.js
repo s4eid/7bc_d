@@ -13,6 +13,9 @@ export const initialValues = {
   price: null,
   type: null,
   product_id: null,
+  made: null,
+  material: null,
+  shape: null,
   // img_1: null,
   // img_2: null,
   // img_3: null,
@@ -24,8 +27,8 @@ export const addProductSchema = Yup.object().shape({
     .min(3, "Too short!")
     .max(30, "Too long!")
     .required("Required"),
-  width: Yup.number().typeError("Should be number").required("Required"),
-  height: Yup.number().typeError("Should be number").required("Required"),
+  width: Yup.string().typeError("Should be string").required("Required"),
+  height: Yup.string().typeError("Should be string").required("Required"),
   stock: Yup.number().typeError("Should be number").required("Required"),
   origin: Yup.string().typeError("Should be string").nullable(true),
   age: Yup.number().typeError("Should be number").nullable(true),
@@ -39,8 +42,23 @@ export const addProductSchema = Yup.object().shape({
     .min(10, "Too short!")
     .max(150, "Too long!")
     .nullable(true),
-  weight: Yup.number().typeError("Should be number").required("Required"),
-  price: Yup.number().typeError("Should be number").required("Required"),
+  made: Yup.string()
+    .typeError("Should be string")
+    .min(3, "Too short!")
+    .max(30, "Too long!")
+    .nullable(true),
+  shape: Yup.string()
+    .typeError("Should be string")
+    .min(3, "Too short!")
+    .max(30, "Too long!")
+    .nullable(true),
+  material: Yup.string()
+    .typeError("Should be string")
+    .min(3, "Too short!")
+    .max(30, "Too long!")
+    .nullable(true),
+  weight: Yup.string().typeError("Should be string").required("Required"),
+  price: Yup.string().typeError("Should be string").required("Required"),
   type: Yup.string().typeError("Should be string").required("Required"),
   img_1: Yup.object().nullable(true),
   img_2: Yup.object().nullable(true).default(null),

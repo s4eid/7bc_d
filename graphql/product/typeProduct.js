@@ -3,20 +3,23 @@ const typeProduct = gql`
   type Product {
     product_id: ID!
     name: String!
-    price: Int!
+    price: String!
     type: String!
     created_at: String!
     product_details_id: ID
-    width: Int!
-    height: Int!
+    width: String!
+    height: String!
     origin: String
     age: Int
     family: String
     main_color: String
     description: String
-    weight: Int!
+    weight: String!
     product_inventory_id: ID!
     pieces: Int!
+    made: String
+    shape: String
+    material: String
     # product_discount_id: ID!
     # percent: Int!
     # active: Boolean!
@@ -38,7 +41,7 @@ const typeProduct = gql`
   type ProductCreated {
     product_id: ID!
     name: String!
-    price: Int!
+    price: String!
     type: String!
     created_at: String!
   }
@@ -68,41 +71,47 @@ const typeProduct = gql`
   type Mutation {
     addProduct(
       name: String!
-      price: Int!
+      price: String!
       admin_id: ID!
       type: String!
-      width: Int!
-      height: Int!
+      width: String!
+      height: String!
       origin: String
       age: Int
       family: String
       main_color: String
       description: String
-      weight: Int!
+      weight: String!
       pieces: Int!
+      made: String
+      material: String
+      shape: String
       img_1: String!
       img1_id: String!
       img_2: String
       img2_id: String
       img_3: String # percent: Int! # active: Boolean! # discount_name: String
       img3_id: String
-    ): ProductCreated!
-    deleteProduct(product_id: ID!): Product
+    ): String
+    deleteProduct(product_id: ID!): String
     editProduct(
       product_id: ID!
       name: String!
-      price: Int!
+      price: String!
       type: String!
-      width: Int!
-      height: Int!
+      width: String!
+      height: String!
       origin: String
       age: Int
       family: String
       main_color: String
       description: String
-      weight: Int!
+      weight: String!
       pieces: Int!
-    ): Product
+      made: String
+      material: String
+      shape: String
+    ): String
   }
 `;
 export default typeProduct;

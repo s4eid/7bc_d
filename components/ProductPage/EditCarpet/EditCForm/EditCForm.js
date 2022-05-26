@@ -19,6 +19,9 @@ export default function EditCForm({
   stock,
   origin,
   description,
+  shape,
+  made,
+  material,
 }) {
   const [editProduct, { data, loading, error }] = useMutation(EDIT_PRODUCT);
   const router = useRouter();
@@ -34,6 +37,9 @@ export default function EditCForm({
     weight,
     price,
     type,
+    shape,
+    made,
+    material,
     product_id,
     // img_1: null,
     // img_2: null,
@@ -49,13 +55,12 @@ export default function EditCForm({
           initialValues={initialValues}
           validationSchema={addProductSchema}
           onSubmit={async (data) => {
-            const _price = parseInt(data.price);
+            const _price = data.price;
             const _pieces = parseInt(data.stock);
             const _age = parseInt(data.age);
-            const _weight = parseInt(data.weight);
-            const _height = parseInt(data.height);
-            const _width = parseInt(data.width);
-            console.log(data);
+            const _weight = data.weight;
+            const _height = data.height;
+            const _width = data.width;
             await editProduct({
               variables: {
                 name: data.name,
@@ -70,6 +75,9 @@ export default function EditCForm({
                 family: data.family,
                 origin: data.origin,
                 productId: data.product_id,
+                made: data.made,
+                shape: data.shape,
+                material: data.material,
               },
               onCompleted: () => {
                 router.push("/carpets");
@@ -289,6 +297,72 @@ export default function EditCForm({
                   />
                 </div> */}
               </div>
+              <div className={editCForm.inputsContainer}>
+                <div className={editCForm.holder}>
+                  {errors.made && touched.made ? (
+                    <label className={editCForm.error}>{errors.made}</label>
+                  ) : (
+                    <label className={editCForm.errorC}>Made</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Made"}
+                    className={editCForm.fieldE}
+                    name="made"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Made
+                    </option>
+                    <option value="hand">Hand</option>
+                    <option value="machine">Machine</option>
+                    <option value="machine&hand">Machine&Hand</option>
+                  </Field>
+                </div>
+                <div className={editCForm.holder}>
+                  {errors.material && touched.material ? (
+                    <label className={editCForm.error}>{errors.material}</label>
+                  ) : (
+                    <label className={editCForm.errorC}>Material</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Material"}
+                    className={editCForm.fieldE}
+                    name="material"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Material
+                    </option>
+                    <option value="wool">wool</option>
+                    <option value="silk">silk</option>
+                    <option value="bamboo">bamboo</option>
+                  </Field>
+                </div>
+                <div className={editCForm.holder}>
+                  {errors.shape && touched.shape ? (
+                    <label className={editCForm.error}>{errors.shape}</label>
+                  ) : (
+                    <label className={editCForm.errorC}>Shape</label>
+                  )}
+                  <Field
+                    as="select"
+                    placeholder={"Shape"}
+                    className={editCForm.fieldE}
+                    name="shape"
+                    enterKeyHint="next"
+                  >
+                    <option value="" selected disabled hidden>
+                      Shape
+                    </option>
+                    <option value="runner">Runner</option>
+                    <option value="normal">Normal</option>
+                    <option value="circle">Circl</option>
+                    <option value="square">Square</option>
+                  </Field>
+                </div>
+              </div>
               {/* <div className={editCForm.inputsContainer}>
                   <div className={editCForm.holder}>
                     <input
@@ -314,26 +388,19 @@ export default function EditCForm({
                   </div>
               </div> */}
               <div className={editCForm.loginOr}>
-                <button
-                  type="submit"
-                  disabled={!isValid && dirty}
-                  className={editCForm.addFBtn}
-                >
-                  Edit product
-                </button>
-                {/* <button
-                  onClick={() => setIsRegister(!isRegister)}
-                  className={register.orRegister}
-                >
-                  Have Account?
-                </button> */}
-                {/* {loading ? ( */}
-                {/* <Loading /> */}
-                {/* ) : error ? ( */}
-                {/* <Error error={errorLogin} /> */}
-                {/* ) : ( */}
-                <></>
-                {/* )} */}
+                {!loading ? (
+                  <button
+                    type="submit"
+                    disabled={!isValid && dirty}
+                    className={editCForm.addFBtn}
+                  >
+                    Edit product
+                  </button>
+                ) : (
+                  <button disabled={true} className={editCForm.button}>
+                    <span className={editCForm.buttonLoading}> </span>
+                  </button>
+                )}
               </div>
             </Form>
           )}

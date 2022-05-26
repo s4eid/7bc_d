@@ -14,9 +14,10 @@ export default function EditProductPage({
   stock,
   origin,
   description,
+  shape,
+  material,
+  made,
 }) {
-  console.log(name);
-
   return (
     <EditCForm
       product_id={product_id}
@@ -31,6 +32,9 @@ export default function EditProductPage({
       stock={stock}
       origin={origin}
       description={description}
+      made={made}
+      shape={shape}
+      material={material}
     />
   );
 }
