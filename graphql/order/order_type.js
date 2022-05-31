@@ -3,8 +3,8 @@ const typeOrder = gql`
   type OrderItems {
     quantity: Int
     payment_transaction_id: ID
-    price: Int
-    paid_price: Int
+    price: String
+    paid_price: String
     img_1: String
     product_id: ID
     transaction_status: String
@@ -32,11 +32,11 @@ const typeOrder = gql`
     cvv: Int
     currency: String
     conversation_id: ID
-    paid_price: Int
+    paid_price: String
     card_association: String
     card_family: String
     card_type: String
-    price: Int
+    price: String
     installment: Int
     fraud_status: Int
     iyzico_commission_fee: String
@@ -48,7 +48,7 @@ const typeOrder = gql`
     order_id: ID!
     status: Int
     created_at: String
-    paid_price: Int
+    paid_price: String
     email: String
   }
 

@@ -38,13 +38,6 @@ const typeProduct = gql`
     made: String
     product_id: ID!
   }
-  type ProductCreated {
-    product_id: ID!
-    name: String!
-    price: String!
-    type: String!
-    created_at: String!
-  }
   type PageInfo {
     startCursor: String
     hasNextPage: Boolean
