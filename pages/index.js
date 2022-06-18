@@ -6,7 +6,6 @@ import { GET_STATUS } from "../graphql_f/status/Query/getStatus";
 import { useQuery } from "@apollo/client/react";
 export default function Home() {
   const { data, loading } = useQuery(GET_STATUS);
-  console.log(data);
   return !loading ? <HomePage status={data.status} /> : <>loading</>;
 }
 

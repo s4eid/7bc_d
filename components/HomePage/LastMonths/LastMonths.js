@@ -1,9 +1,15 @@
 import React from "react";
 import months from "./lastMonths.module.css";
 import Chart from "./Chart";
+// import useChart from "../../../Hooks/useChart";
 
 export default function LastMonths({ chartD }) {
   const _chartD = chartD.slice().sort((a, b) => a.month - b.month);
+  // const { _data } = useChart(chartD);
+  // console.log(_data);
+  // let _month = new Date(JSON.parse(_chartD[0].month));
+  // let month = _month.getMonth();
+  // console.log(month);
   const data = {
     labels: [
       "january",

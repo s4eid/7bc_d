@@ -43,7 +43,6 @@ GROUP BY DATE_TRUNC('month',created_at);
       recentOrders: recentOrders.rows,
       recentMonths: recentMonths.rows,
     };
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
