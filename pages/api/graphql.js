@@ -9,11 +9,19 @@ import typeProduct from "../../graphql/product/typeProduct";
 import resolverProduct from "../../graphql/product/resolverProduct";
 import typeOrder from "../../graphql/order/order_type";
 import resolverOrder from "../../graphql/order/order_resolver";
+import resolverStatus from "../../graphql/status/resolverStatus";
+import typeStatus from "../../graphql/status/typeStatus";
 
 const cors = Cors();
 const apolloServer = new ApolloServer({
-  resolvers: [resolverAdmin, resolverUser, resolverProduct, resolverOrder],
-  typeDefs: [typeAdmin, typeUser, typeProduct, typeOrder],
+  resolvers: [
+    resolverAdmin,
+    resolverUser,
+    resolverProduct,
+    resolverOrder,
+    resolverStatus,
+  ],
+  typeDefs: [typeAdmin, typeUser, typeProduct, typeOrder, typeStatus],
   context: async ({ req, res }) => {
     return { pool, req, res };
   },

@@ -1,0 +1,59 @@
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.holder {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  background-color: #111111;
+  height: 300px;
+  border-radius: 10px;
+  width: 300px;
+  color: #fff;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  font-weight: bold;
+}
+.icon {
+  color: #0081ef;
+  font-size: 25px;
+}
+.data {
+  color: #111111;
+  font-weight: bold;
+  border-left: 5px solid #0081ef;
+  background-color: #fff;
+  border-right: 5px solid #0081ef;
+}
+.resentOrders {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-direction: column;
+}
+.resentOrder {
+  display: flex;
+  color: #111111;
+  border-left: 5px solid #0081ef;
+  border-right: 5px solid #0081ef;
+  cursor: pointer;
+  justify-content: space-around;
+  background-color: #fff;
+}
+.owner {
+  font-weight: bold;
+}
+.resentOrder:hover {
+  color: #0081ef;
+}

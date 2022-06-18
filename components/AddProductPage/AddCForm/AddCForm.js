@@ -257,6 +257,7 @@ export default function AddCForm() {
                     <option value="wool">wool</option>
                     <option value="silk">silk</option>
                     <option value="bamboo">bamboo</option>
+                    <option value="leather">leather</option>
                   </Field>
                 </div>
                 <div className={addCForm.holder}>
@@ -332,6 +333,7 @@ export default function AddCForm() {
                     </option>
                     <option value="carpet">Carpet</option>
                     <option value="kilim">Kilim</option>
+                    <option value="leather">leather</option>
                     <option value="tablecloth">Tablecloth</option>
                   </Field>
                 </div>
