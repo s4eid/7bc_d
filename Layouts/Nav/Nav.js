@@ -19,6 +19,15 @@ export default function NavBar({ children }) {
       <div className={nav.container}>
         <div className={nav.linksContainer}>
           <ul className={nav.linksCU}>
+            <Link href="/">
+              <li
+                className={
+                  router.pathname === "/" ? nav.activeLink : nav.notActiveLink
+                }
+              >
+                Status
+              </li>
+            </Link>
             <Link href="/carpets">
               <li
                 className={
@@ -30,7 +39,7 @@ export default function NavBar({ children }) {
                 Carpet
               </li>
             </Link>
-            {/* <Link href="/kilims">
+            <Link href="/kilims">
               <li
                 className={
                   router.pathname === "/kilims"
@@ -40,18 +49,29 @@ export default function NavBar({ children }) {
               >
                 Kilim
               </li>
-            </Link> */}
-            {/* <Link href="/tablecloth">
+            </Link>
+            <Link href="/tablecloths">
               <li
                 className={
-                  router.pathname === "/tablecloth"
+                  router.pathname === "/tablecloths"
                     ? nav.activeLink
                     : nav.notActiveLink
                 }
               >
                 Tablecloth
               </li>
-            </Link> */}
+            </Link>
+            <Link href="/leathers">
+              <li
+                className={
+                  router.pathname === "/leathers"
+                    ? nav.activeLink
+                    : nav.notActiveLink
+                }
+              >
+                Leather
+              </li>
+            </Link>
             <Link href="/orders">
               <li
                 className={

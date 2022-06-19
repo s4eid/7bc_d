@@ -35,7 +35,7 @@
   list-style: none;
   color: #fff;
   font-weight: bold;
-  width: 50%;
+  width: 70%;
   height: 100%;
 }
 .linksCU {
@@ -165,7 +165,7 @@
   rotate: (45deg);
   color: #fff;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
   .linksContainer {
     display: none;
   }

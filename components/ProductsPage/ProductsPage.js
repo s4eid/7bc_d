@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import OurCarpets from "./Carpets/OurCarpets";
+import OurProducts from "./Products/OurProducts";
 import { useLazyQuery } from "@apollo/client";
-import Filter from "./Filter/Filter";
 import { SEARCH_PRODUCT } from "../../graphql_f/product/Query/searchProduct";
-import carpetPage from "./carpets.module.css";
+import productsPage from "./products.module.css";
 import ProdcutSearch from "../ProductSearch/ProductSearch";
 
-export default function CarpetsPage({ products, pageInfo, refetch }) {
+export default function ProductsPage({ products, pageInfo, refetch, type }) {
   const [search, setSearch] = useState("");
   const [searchP, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
   return (
-    <div className={carpetPage.mainContainer}>
-      <div className={carpetPage.searchC}>
+    <div className={productsPage.mainContainer}>
+      <div className={productsPage.searchC}>
         <input
           type="text"
           value={search}
@@ -19,15 +18,20 @@ export default function CarpetsPage({ products, pageInfo, refetch }) {
             setSearch(e.target.value);
             searchP({ variables: { text: e.target.value } });
           }}
-          className={carpetPage.fieldE}
+          className={productsPage.fieldE}
           placeholder="Search..."
         />
       </div>
       {/* <Filter index={products.length} /> */}
       {data?.searchProduct.length === 0 || !data ? (
-        <OurCarpets products={products} pageInfo={pageInfo} refetch={refetch} />
+        <OurProducts
+          products={products}
+          pageInfo={pageInfo}
+          refetch={refetch}
+          type={type}
+        />
       ) : (
-        <ProdcutSearch products={data?.searchProduct} />
+        <ProdcutSearch type={type} products={data?.searchProduct} />
       )}
     </div>
   );

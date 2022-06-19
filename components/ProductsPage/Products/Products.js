@@ -3,20 +3,20 @@ import React from "react";
 import productItems from "./ourProduct.module.css";
 import { useRouter } from "next/router";
 
-export default function Carpet({ c }) {
+export default function Product({ c, type }) {
   const router = useRouter();
   return (
     <div
       className={productItems.productMainHolder}
       onClick={() => {
-        router.push(`/carpets/${c.product_id}`);
+        router.push(`/${type}s/${c.product_id}`);
       }}
     >
       <div className={productItems.productContainer}>
         <Image
           className={c.pieces <= 0 ? productItems.notAvailable : null}
           src={c.img_1}
-          alt="carpets"
+          alt={type}
           layout="fill"
           loading="lazy"
         />
