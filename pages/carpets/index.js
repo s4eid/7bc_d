@@ -40,11 +40,6 @@ export async function getStaticProps() {
   await client.query({
     query: GET_PRODUCTS,
     variables: { type: "carpet", first: 4 },
-    // context: {
-    //   headers: {
-    //     Cookie: req.headers.cookie,
-    //   },
-    // },
   });
   return {
     props: {
