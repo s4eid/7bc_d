@@ -3,7 +3,7 @@ import { compare } from "bcrypt";
 import {
   jwtGenerate,
   jwtGenerateAccess,
-} from "../../Functions/jwtGen/jwtGenerate";
+} from "../../functions/jwtGen/jwtGenerate";
 import cookie from "cookie";
 import { ERROR_CODES } from "../../errorCodes/errorCodes";
 
