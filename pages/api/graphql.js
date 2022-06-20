@@ -12,7 +12,9 @@ import resolverOrder from "../../graphql/order/order_resolver";
 import resolverStatus from "../../graphql/status/resolverStatus";
 import typeStatus from "../../graphql/status/typeStatus";
 
-const cors = Cors();
+const cors = Cors({
+  allowCredentials: true,
+});
 const apolloServer = new ApolloServer({
   resolvers: [
     resolverAdmin,

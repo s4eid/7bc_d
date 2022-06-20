@@ -6,5 +6,20 @@ import AdminPage from "../../../../components/UsersPage/AdminsPage/AdminPage/Adm
 export default function Admin() {
   return <AdminPage />;
 }
+export async function getServerSideProps({ req, res, query }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      // initialApolloState: client.cache.extract(),
+    },
+  };
+}
 Admin.Nav = Nav;
 Admin.Footer = Footer;

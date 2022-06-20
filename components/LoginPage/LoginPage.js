@@ -1,8 +1,23 @@
-import React from "react";
-import login from "login.module.css";
+import React, { useState, useRef } from "react";
+import login from "./login.module.css";
+import { initialValues, loginSchema } from "../../validation/login";
 import { Formik, Field, Form } from "formik";
+import { useRouter } from "next/router";
+import { useMutation } from "@apollo/client";
+import { LOGIN_ADMIN } from "../../graphql_f/admin/Mutation/loginAdmin";
+import { getAdminInfo } from "../../Redux/Actions/Admin/admin";
+import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const reRef = useRef();
+  const router = useRouter();
+  const [loginAdmin, { data, loading, error }] = useMutation(LOGIN_ADMIN);
+  const [errorMessage, setErrorMessage] = useState("");
   return (
     <div className={login.mainContainer}>
       {error ? (
@@ -20,15 +35,18 @@ export default function LoginPage() {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={async (data) => {
-            data.email = await data.email.toLowerCase();
-            loginUser({
+            const token = await reRef.current.executeAsync();
+            reRef.current.reset();
+            data.email = data.email.toLowerCase();
+            loginAdmin({
               variables: {
                 email: data.email,
                 password: data.password,
+                token: token,
               },
               onError: (err) => setErrorMessage(err.message),
               onCompleted: () => {
-                dispatch(getUserInfo());
+                dispatch(getAdminInfo());
                 router.push("/");
               },
             });
@@ -36,6 +54,12 @@ export default function LoginPage() {
         >
           {({ errors, touched, isValid, dirty }) => (
             <Form className={login.fields}>
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                size="invisible"
+                ref={reRef}
+                className={login.reCaptcha}
+              />
               <div className={login.inputsContainer}>
                 <div className={login.holder}>
                   <Field
@@ -106,20 +130,6 @@ export default function LoginPage() {
                     <span className={login.buttonLoading}> </span>
                   </button>
                 )}
-                <div
-                  type="button"
-                  onClick={() => router.push("/register")}
-                  className={login.orRegister}
-                >
-                  Have no account?
-                </div>
-                <div
-                  type="button"
-                  onClick={() => router.push("/change_password")}
-                  className={login.resetPass}
-                >
-                  Forgot Your Password?
-                </div>
               </div>
             </Form>
           )}

@@ -10,7 +10,14 @@ export default function Home() {
 }
 
 export async function getServerSideProps({ req, res }) {
-  // const user = await getUser_server(token, session?.user);
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const client = await initializeApollo();
   await client.query({
     query: GET_STATUS,

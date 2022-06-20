@@ -25,9 +25,12 @@ const errorLink = onError(
 );
 const link = createHttpLink({
   uri: process.env.NEXT_PUBLIC_URI,
-  credentials: "include",
+  credentials: "same-origin",
+  headers: {
+    Origin: process.env.NEXT_PUBLIC_URL,
+  },
   fetchOptions: {
-    credentials: "include",
+    credentials: "same-origin",
   },
 });
 

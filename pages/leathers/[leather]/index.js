@@ -25,8 +25,16 @@ export default function Product() {
     </>
   );
 }
-export async function getServerSideProps(req, res) {
-  const product_id = req.params.leather;
+export async function getServerSideProps({ req, res, query }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  const product_id = query.leather;
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCT,

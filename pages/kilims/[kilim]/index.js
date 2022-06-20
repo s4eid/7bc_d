@@ -17,8 +17,16 @@ export default function Kilim() {
   return <ProductPage type="kilim" product={data.product} />;
 }
 
-export async function getServerSideProps(req, res) {
-  const product_id = req.params.kilim;
+export async function getServerSideProps({ req, res, query }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  const product_id = query.kilim;
   const client = initializeApollo();
   await client.query({
     query: GET_PRODUCT,

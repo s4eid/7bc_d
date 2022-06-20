@@ -9,7 +9,15 @@ export default function Admins({ initialApolloState }) {
   return <AdminsPage adminsD={initialApolloState.ROOT_QUERY.admins} />;
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const client = initializeApollo();
   await client.query({
     query: GET_ADMINS,

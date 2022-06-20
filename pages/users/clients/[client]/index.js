@@ -18,7 +18,15 @@ export default function User() {
   return <>{!loading ? <UserPage userD={data.user} /> : <></>}</>;
 }
 
-export async function getServerSideProps(req, res) {
+export async function getServerSideProps({ req, res }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const user_id = req.params.client;
   const client = initializeApollo();
 

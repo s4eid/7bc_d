@@ -18,6 +18,7 @@ const typeAdmin = gql`
       email: String!
       password: String!
     ): Admin!
+    loginAdmin(email: String!, password: String!, token: String!): String
   }
 `;
 export default typeAdmin;

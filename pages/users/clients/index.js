@@ -9,7 +9,15 @@ export default function Users({ initialApolloState }) {
   return <UsersPage usersD={initialApolloState.ROOT_QUERY.users} />;
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const client = initializeApollo();
   await client.query({
     query: GET_USERS,

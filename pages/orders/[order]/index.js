@@ -20,7 +20,14 @@ export default function Order() {
   );
 }
 export async function getServerSideProps({ req, res, query }) {
-  // const user = await getUser_server(token, session?.user);
+  if (!req.cookies.refreshToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
   const order_id = query.order;
   const client = await initializeApollo();
   await client.query({

@@ -1,5 +1,6 @@
 import { getAdmins } from "../../Querys/admin/getAdmins";
 import { addAdmin } from "../../Querys/admin/addAdmin";
+import { loginAdmin } from "../../Querys/admin/loginAdmin";
 
 const resolverAdmin = {
   Query: {
@@ -17,6 +18,10 @@ const resolverAdmin = {
         phone_number,
         pool
       );
+      return data;
+    },
+    async loginAdmin(_, { email, password, token }, { res, pool }) {
+      const data = await loginAdmin(email, password, token, res, pool);
       return data;
     },
   },
