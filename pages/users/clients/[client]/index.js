@@ -18,7 +18,7 @@ export default function User() {
   return <>{!loading ? <UserPage userD={data.user} /> : <></>}</>;
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res, query }) {
   if (!req.cookies.refreshToken) {
     return {
       redirect: {
@@ -27,7 +27,7 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
-  const user_id = req.params.client;
+  const user_id = query.client;
   const client = initializeApollo();
 
   await client.query({
