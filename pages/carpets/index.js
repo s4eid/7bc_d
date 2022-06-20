@@ -12,7 +12,7 @@ import Footer from "../../Layouts/Footer/Footer";
 export default function Carpets() {
   const dispatch = useDispatch();
   const products = useSelector((s) => s.products);
-  const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
+  const { data, loading, fetchMore } = useQuery(GET_PRODUCTS, {
     fetchPolicy: "cache-first",
     variables: { type: "carpet", first: 4 },
   });
