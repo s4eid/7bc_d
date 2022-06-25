@@ -28,7 +28,7 @@ export default function Product({ p }) {
               Edit
             </button>
             <button
-              disabled={true}
+              // disabled={true}
               onClick={() => {
                 let deleteOr = confirm("Are You Sure Wanna Delete Product?");
                 if (deleteOr) {

@@ -80,12 +80,12 @@ const typeProduct = gql`
       material: String
       shape: String
       img_1: String!
-      img1_id: String!
+      # img1_id: String!
       img_2: String
-      img2_id: String
+      # img2_id: String
       img_3: String # percent: Int! # active: Boolean! # discount_name: String
-      img3_id: String
-    ): String
+    ): # img3_id: String
+    String
     deleteProduct(product_id: ID!): String
     editProduct(
       product_id: ID!

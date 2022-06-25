@@ -2,6 +2,7 @@ import { deleteOrder } from "../../Querys/Order/deleteOrder";
 import { getOrder } from "../../Querys/Order/getOrder";
 import { getOrders } from "../../Querys/Order/getOrders";
 import { order_status } from "../../Querys/Order/order_status";
+import { searchOrders } from "../../Querys/Order/searchOrder";
 
 const resolverOrder = {
   Query: {
@@ -11,6 +12,10 @@ const resolverOrder = {
     },
     async getOrders(_, __, { pool }) {
       const data = await getOrders(pool);
+      return data;
+    },
+    async searchOrder(_, { email }, { pool }) {
+      const data = await searchOrders(email, pool);
       return data;
     },
   },

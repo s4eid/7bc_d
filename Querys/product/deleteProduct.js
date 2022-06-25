@@ -33,7 +33,7 @@ export const deleteProduct = async (product_id, pool) => {
       [product_id]
     );
     await cloudinary.v2.api.delete_resources(
-      [img.img1_id, img.img2_id, img.img3_id],
+      [img.img_1, img.img_2, img.img_3],
       function (error, result) {
         console.log(result, error);
       }

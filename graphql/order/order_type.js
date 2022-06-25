@@ -59,6 +59,7 @@ const typeOrder = gql`
   type Query {
     getOrder(order_id: ID!): OneOrder
     getOrders: [getOrdersT]!
+    searchOrder(email: String!): [getOrdersT]
   }
   type Mutation {
     orderUpdate(order_id: ID!, email: String!, status: Int!): String

@@ -1,19 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   initialValues,
   addProductSchema,
 } from "../../../validation/addProduct";
 import { Formik, Field, Form } from "formik";
+// import { getImages } from "../../../functions/getImages";
 import addCForm from "./addCForm.module.css";
 import { ADD_PRODUCT } from "../../../graphql_f/product/Mutation/addProduct";
-import { upload_cloud } from "../../../functions/uploadCloudinary";
+// import { upload_cloud } from "../../../functions/uploadCloudinary";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
 export default function AddCForm() {
   const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT);
+  const [img_1, setImg_1] = useState();
+  const [img_2, setImg_2] = useState();
+  const [img_3, setImg_3] = useState();
   const router = useRouter();
-
+  const getImages = (img) => {
+    console.log("it happend" + img);
+    if (img) {
+      const reader_1 = new FileReader();
+      reader_1.readAsDataURL(img);
+      reader_1.onload = () => {
+        setImg_1(reader_1.result);
+      };
+    }
+  };
+  const getImages_2 = (img) => {
+    if (img) {
+      const reader_1 = new FileReader();
+      reader_1.readAsDataURL(img);
+      reader_1.onload = () => {
+        setImg_2(reader_1.result);
+      };
+    }
+  };
+  const getImages_3 = (img) => {
+    if (img) {
+      const reader_1 = new FileReader();
+      reader_1.readAsDataURL(img);
+      reader_1.onload = () => {
+        setImg_3(reader_1.result);
+      };
+    }
+  };
   return (
     <div className={addCForm.mainContainer}>
       <div className={addCForm.title}>
@@ -24,17 +55,6 @@ export default function AddCForm() {
           initialValues={initialValues}
           validationSchema={addProductSchema}
           onSubmit={async (data) => {
-            const { imageNewArray, public_ids } = await upload_cloud(
-              data.img_1,
-              data.img_2,
-              data.img_3
-            );
-            data.img_1 = imageNewArray[0];
-            data.img_2 = imageNewArray[1];
-            data.img_3 = imageNewArray[2];
-            data.img1_id = public_ids[0];
-            data.img2_id = public_ids[1];
-            data.img3_id = public_ids[2];
             const price = data.price;
             const pieces = parseInt(data.stock);
             const age = parseInt(data.age);
@@ -51,12 +71,12 @@ export default function AddCForm() {
                 adminId: admin,
                 type: data.type,
                 pieces,
-                img_1: data.img_1,
-                img1_id: data.img1_id,
-                img_2: data.img_2,
-                img2_id: data.img2_id,
-                img_3: data.img_3,
-                img3_id: data.img3_id,
+                img_1: img_1,
+                // img1_id: data.img1_id,
+                img_2: img_2,
+                // img2_id: data.img2_id,
+                img_3: img_3,
+                // img3_id: data.img3_id,
                 origin: data.origin,
                 weight,
                 age,
@@ -71,6 +91,17 @@ export default function AddCForm() {
                 router.push("/");
               },
             });
+            // const { imageNewArray, public_ids } = await upload_cloud(
+            //   data.img_1,
+            //   data.img_2,
+            //   data.img_3
+            // );
+            // data.img_1 = imageNewArray[0];
+            // data.img_2 = imageNewArray[1];
+            // data.img_3 = imageNewArray[2];
+            // data.img1_id = public_ids[0];
+            // data.img2_id = public_ids[1];
+            // data.img3_id = public_ids[2];
           }}
         >
           {({ errors, touched, isValid, dirty, setFieldValue }) => (
@@ -343,7 +374,10 @@ export default function AddCForm() {
                     id="img_1"
                     className={addCForm.fieldE}
                     name="img_1"
-                    onChange={(e) => setFieldValue("img_1", e.target.files[0])}
+                    onChange={(e) => {
+                      setFieldValue("img_1", e.target.files[0]);
+                      getImages(e.target.files[0]);
+                    }}
                     required
                   />
                 </div>
@@ -355,7 +389,10 @@ export default function AddCForm() {
                     id="img_3"
                     className={addCForm.fieldE}
                     name="img_3"
-                    onChange={(e) => setFieldValue("img_3", e.target.files[0])}
+                    onChange={(e) => {
+                      setFieldValue("img_3", e.target.files[0]);
+                      getImages_3(e.target.files[0]);
+                    }}
                   />
                 </div>
                 <div className={addCForm.holder}>
@@ -364,7 +401,10 @@ export default function AddCForm() {
                     id="img_2"
                     className={addCForm.fieldE}
                     name="img_2"
-                    onChange={(e) => setFieldValue("img_2", e.target.files[0])}
+                    onChange={(e) => {
+                      setFieldValue("img_2", e.target.files[0]);
+                      getImages_2(e.target.files[0]);
+                    }}
                   />
                 </div>
               </div>
